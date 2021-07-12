@@ -30,6 +30,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 url: '/ocrmypdf',
                 title: 'OCRmyPDF',
             },
+            ENABLE_PEA: {
+                url: '/pea',
+                title: 'PEA',
+            },
         },
         loadPopupNodeList() {
             return document.querySelectorAll(this.popupSelectors.commonWrap);

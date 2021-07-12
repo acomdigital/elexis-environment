@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  pea-app:
+    image: docker.qix.sx/elexis/pea:app
+    stdin_open: true
+    tty: true
+    environment:
+      - REACT_APP_API_URL=$PEA_REACT_APP_API_URL
+      - REACT_APP_PATIENT_API_URL=$PEA_REACT_APP_PATIENT_API_URL
+      - REACT_APP_TITLE=$ORGANISATION_NAME
+    ports:
+#      - 3002:80
+      - 3002:3002
+    networks:
+      - backend
+
+  pea-api:
+    image: docker.qix.sx/elexis/pea:api
+    environment:
+      - DEEPL_KEY=$PEA_DEEPL_KEY
+      - USER_LOGIN=$ADMIN_USERNAME
+      - USER_PASS=$ADMIN_PASSWORD
+      - TOKEN_SECRET=$PEA_AUTH_TOKEN
+    volumes:
+      - pea-pdf:/app/pdf
+    ports:
+      - 3003:3003
+    networks:
+      - backend
+
+volumes:
+  pea-pdf:

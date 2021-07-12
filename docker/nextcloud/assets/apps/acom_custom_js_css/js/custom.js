@@ -1,3 +1,4 @@
+
 const cumulativeOffset = function (element) {
     let offsetTop = 0, offsetLeft = 0;
     do {
@@ -11,7 +12,7 @@ const cumulativeOffset = function (element) {
 const elxsNavigation = {
     initialized: false,
     logoSelectors: [
-        '.sidebar__footer',
+        '#nextcloud',
     ],
     navigationList: {
         ENABLE_HOME: {
@@ -54,7 +55,7 @@ const elxsNavigation = {
 
         const activeRow = document.createElement('div')
         activeRow.id = 'elxs-nav-list-active';
-        row.appendChild(activeRow);
+        row.appendChild(activeRow)
 
         const noActiveRow = document.createElement('div')
         noActiveRow.id = 'elxs-nav-list-no-active';
@@ -62,16 +63,16 @@ const elxsNavigation = {
         const noActiveRowTitle = document.createElement('div')
         const noActiveRowInner = document.createElement('div')
         noActiveRowInner.id = 'elxs-nav-list-no-active-inner';
-        noActiveRowTitle.innerText = "Nicht installiert";
+        noActiveRowTitle.innerText = "Nicht installiert"
         noActiveRowTitle.className = 'elxs-nav-list-no-active-title';
 
         const noActiveLinks = Object.keys(configObject).filter(el => !configObject[el])
         if (noActiveLinks.length) {
-            noActiveRow.className = 'fill';
-            noActiveRow.appendChild(noActiveRowTitle);
-            noActiveRow.appendChild(noActiveRowInner);
+            noActiveRow.className = 'fill'
+            noActiveRow.appendChild(noActiveRowTitle)
+            noActiveRow.appendChild(noActiveRowInner)
         }
-        row.appendChild(noActiveRow);
+        row.appendChild(noActiveRow)
 
         if (!Object.keys(this.navigationList).some(r => noActiveLinks.indexOf(r) >= 0)) {
             noActiveRow.style.display='none';
@@ -81,15 +82,15 @@ const elxsNavigation = {
             const link = document.createElement('a');
             link.href = item.url;
             link.innerHTML = `
-                    <div style="width: 90%; margin: 0 auto;">
-                        <img id="${item.title}" src="${item.img}" style="width: 50%;">
-                        <p style="">
-                            ${item.title}
-                        </p>
-                    </div>
-                `;
+								<div style="width: 90%; margin: 0 auto;">
+										<img id="${item.title}" src="${item.img}" style="width: 50%;">
+										<p style="">
+												${item.title}
+										</p>
+								</div>
+						`;
             if (noActiveLinks.includes(key)) {
-                link.className = 'no-active';
+                link.className = 'no-active'
                 noActiveRowInner.appendChild(link);
             } else {
                 activeRow.appendChild(link);
@@ -103,130 +104,166 @@ const elxsNavigation = {
     renderStyles() {
         const styles = document.createElement('style');
         styles.innerHTML = `
-                #elxs-nav-container {
-                    position: absolute;
-                    left: -9999px;
-                    top: -9999px;
-                    transition: opacity .15s ease-in-out, transform .15s ease-in-out;
-                    opacity: 0;
-                    padding-top: 15px;
-                    text-indent: initial !important;
-                }
-                #elxs-nav-container.elxs-bottom-center { transform: translate(-50%, 30px); }
-                #elxs-nav-container.elxs-bottom-left { transform: translate(0, 30px); }
-                #elxs-nav-container.elxs-top-left { transform: translate(-50%, -30px); }
-                #elxs-nav-container.elxs-top-center { transform: translate(-50%, -30px); }
-                #elxs-nav-container.elxs-show { pointer-events: all; opacity: 1; }
-                #elxs-nav-container.elxs-bottom-center.elxs-show {
-                    transform: translate(-50%, 0);
-                    top: 100%;
-                    left: 50%;
-                }
-                #elxs-nav-container.elxs-bottom-left.elxs-show {
-                    transform: translate(-50%, 0);
-                    top: 100%;
-                    left: 50%;
-                }
-                #elxs-nav-container.elxs-top-center.elxs-show {
-                    transform: translate(-50%, 0);
-                    top: initial;
-                    bottom: 100%;
-                    left: 50%;
-                }
-                #elxs-nav-container.elxs-top-left.elxs-show {
-                    top: initial;
-                    bottom: 100%;
-                    left: 50%;
-                    transform: translate(-50%, 0);
-                }
-                #elxs-nav-container.elxs-show.elxs-top-left {
-                    left: 50%;
-                    transform: translate(-50%, 0);
-                    top: initial;
-                    bottom: 100%;
-                }
-                #elxs-nav-list {
-                    box-shadow: 0px 4px 17px rgba(115, 115, 115, 0.25);
-                    background: #F2F2F2;
-                    border-radius: 4px;
-                    width: 210px;
-                    min-height: 210px;
-                    padding: 25px 13px 16px;
-                    position: relative;
-                }
-                #elxs-nav-list-active {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                }
-                #elxs-nav-list-no-active-inner {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;                   
-                }
-                #elxs-nav-list-no-active.fill {
-                    padding: 15px 0 0;
-                    margin: 15px 0 0;
-                    border-top: 1px solid #929292;
-                }
-                .elxs-nav-list-no-active-title{
-                    font-size: 12px;
-                    color: #929292;
-                    padding: 0 0 10px;
-                    text-align: center;
-                }
-                #elxs-nav-list::before {
-                    content: "";
-                    border-left: 16px solid transparent;
-                    border-right: 16px solid transparent;
-                    border-bottom: 11px solid #f2f2f2;
-                    position: absolute;
-                }
-                
-                #elxs-nav-container.elxs-bottom-center #elxs-nav-list::before, #elxs-nav-container.elxs-bottom-left #elxs-nav-list::before {
-                    top: -5px;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-                }
-                
-                #elxs-nav-container.elxs-top-center #elxs-nav-list::before, #elxs-nav-container.elxs-top-left #elxs-nav-list::before {
-                    bottom: -5px;
-                    left: 50%;
-                    transform: translate(-50%,50%) rotate(180deg);
-                }
-                
-                #elxs-nav-list a {
-                    display: block;
-                    width: 50%;
-                    text-align: center;
-                    font-size: 12px;
-                    font-family: 'Roboto';
-                    font-weight: 300;
-                    color: #929292;
-                    transition: .15s ease-in-out;
-                    text-decoration: none;
-                    padding: 3px 0;
-                }
-                #elxs-nav-list-no-active-inner a,
-                #elxs-nav-list-active a{
-                    padding-bottom: 20px;
-                }
-                #elxs-nav-list-no-active-inner a:nth-last-child(2),
-                #elxs-nav-list-active a:nth-last-child(2){
-                    padding-bottom: 0;
-                }
-                #elxs-nav-list-no-active-inner a:last-child,
-                #elxs-nav-list-active a:last-child{
-                    padding-bottom: 0;
-                }
-                #elxs-nav-list-no-active{
-                    max-height: 230px;
-                    overflow: auto;
-                }                   
-                #elxs-nav-list a:hover { color: #000; text-decoration: none; }
-                #elxs-nav-list p { margin: 3% 0 0; }
-                #elxs-nav-list img { width: 46px !important; margin: 0 auto;  margin-bottom: 4px;}
-            `;
+						#elxs-nav-container {
+								position: absolute;
+								left: -9999px;
+								top: -9999px;
+								transition: opacity .15s ease-in-out, transform .15s ease-in-out;
+								opacity: 0;
+								padding-top: 15px;
+								text-indent: initial !important;
+						}
+						#elxs-nav-container.elxs-bottom-center { transform: translate(-50%, 30px); }
+						#elxs-nav-container.elxs-bottom-left { transform: translate(0, 30px); }
+						#elxs-nav-container.elxs-top-left { transform: translate(0, -30px); }
+						#elxs-nav-container.elxs-top-center { transform: translate(-50%, -30px); }
+						#elxs-nav-container.elxs-show { pointer-events: all; opacity: 1; }
+						#elxs-nav-container.elxs-bottom-center.elxs-show {
+								transform: translate(-50%, 0);
+								top: 100%;
+								left: 50%;
+						}
+						#elxs-nav-container.elxs-bottom-left.elxs-show {
+								transform: translate(0, 0);
+								top: 100%;
+								left: 5px;
+						}
+						#elxs-nav-container.elxs-top-center.elxs-show {
+								transform: translate(-50%, 0);
+								top: initial;
+								bottom: 100%;
+								left: 50%;
+						}
+						#elxs-nav-container.elxs-top-left.elxs-show {
+								top: initial;
+								bottom: 100%;
+								left: 15px;
+								transform: translate(0, 0);
+						}
+						#elxs-nav-container.elxs-show.elxs-top-left {
+								left: 15px;
+								transform: translate(0, 0);
+								top: initial;
+								bottom: 100%;
+						}
+						#elxs-nav-list {
+								box-shadow: 0px 4px 17px rgba(115, 115, 115, 0.25);
+								background: #F2F2F2;
+								border-radius: 4px;
+								width: 210px;
+								min-height: 210px;
+								padding: 25px 13px 16px;
+								position: relative;
+						}
+
+						.theme--dark #elxs-nav-list {
+								background: #222;
+								box-shadow: none;
+								filter: drop-shadow(0 1px 5px var(--color-box-shadow));
+						}
+
+						#elxs-nav-list-active {
+								display: flex;
+								flex-wrap: wrap;
+								justify-content: space-between;
+						}
+						#elxs-nav-list-no-active-inner {
+								display: flex;
+								flex-wrap: wrap;
+								justify-content: space-between;
+						}
+						#elxs-nav-list-no-active.fill {
+								padding: 15px 0 0;
+								margin: 15px 0 0;
+								border-top: 1px solid #929292;
+						}
+						.elxs-nav-list-no-active-title{
+								font-size: 12px;
+								color: #929292;
+								padding: 0 0 10px;
+								text-align: center;
+						}
+
+						.theme--dark .elxs-nav-list-no-active-title{
+								color: #f6f6f6;
+						}
+
+						#elxs-nav-list::before {
+								content: "";
+								border-left: 16px solid transparent;
+								border-right: 16px solid transparent;
+								border-bottom: 11px solid #f2f2f2;
+								position: absolute;
+						}
+
+						.theme--dark #elxs-nav-list::before {
+								border-bottom: 11px solid #222;
+						}
+
+						#elxs-nav-container.elxs-bottom-center #elxs-nav-list::before {
+								top: -5px;
+								left: 50%;
+								transform: translate(-50%,-50%);
+						}
+
+						#elxs-nav-container.elxs-bottom-left #elxs-nav-list::before {
+								top: -5px;
+								left: 40px;
+								transform: translate(0,-50%);
+						}
+
+						#elxs-nav-container.elxs-top-center #elxs-nav-list::before {
+								bottom: -5px;
+								left: 50%;
+								transform: translate(-50%,50%) rotate(180deg);
+						}
+
+						#elxs-nav-container.elxs-top-left #elxs-nav-list::before {
+								bottom: -5px;
+								left: 40px;
+								transform: translate(0,50%) rotate(180deg);
+						}
+
+						#elxs-nav-list a {
+								display: block;
+								width: 50%;
+								text-align: center;
+								font-size: 12px;
+								font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
+    Cantarell, Ubuntu, Helvetica Neue, Arial, Noto Color Emoji, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+								font-weight: 300;
+								color: #929292;
+								transition: .15s ease-in-out;
+								text-decoration: none;
+								padding: 3px 0;
+						}
+						.theme--dark #elxs-nav-list a {
+								color: #f6f6f6;
+						}
+
+						#elxs-nav-list-no-active-inner a,
+						#elxs-nav-list-active a{
+								padding-bottom: 20px;
+						}
+						#elxs-nav-list-no-active-inner a:nth-last-child(2),
+						#elxs-nav-list-active a:nth-last-child(2){
+								padding-bottom: 0;
+						}
+						#elxs-nav-list-no-active-inner a:last-child,
+						#elxs-nav-list-active a:last-child{
+								padding-bottom: 0;
+						}
+						#elxs-nav-list-no-active{
+								max-height: 230px;
+								overflow: auto;
+						}
+
+						#elxs-nav-list a:hover { color: #000; text-decoration: none; }
+						.theme--dark #elxs-nav-list a:hover { color: #f6f6f6; text-decoration: none; }
+						#elxs-nav-list p { margin: 3% 0 0; }
+						#elxs-nav-list img { width: 46px !important; margin: 0 auto;  margin-bottom: 4px;}
+				`;
         document.head.appendChild(styles);
     },
     loadConfig() {
@@ -260,7 +297,7 @@ const elxsNavigation = {
                             } else {
                                 navigationContainer.classList.add('elxs-bottom-center');
                             }
-                        };
+                        }
                         handleResize();
                         window.onresize = handleResize;
 
@@ -296,11 +333,4 @@ const elxsNavigation = {
             });
     },
 };
-
-const interval = setInterval(function () {
-    const footerEl = document.querySelector('.sidebar__footer');
-    if (footerEl) {
-        elxsNavigation.run();
-        clearInterval(interval);
-    }
-}, 100);
+elxsNavigation.run();
