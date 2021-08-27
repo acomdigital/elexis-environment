@@ -22,6 +22,7 @@ services:
       - USER_LOGIN=$ADMIN_USERNAME
       - USER_PASS=$ADMIN_PASSWORD
       - TOKEN_SECRET=$PEA_AUTH_TOKEN
+      - FHIR_API=$PEA_FHIR_API
     volumes:
       - pea-pdf:/app/pdf
     ports:
