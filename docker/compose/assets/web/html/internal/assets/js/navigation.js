@@ -282,7 +282,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const organisationTitle = document.querySelector("#organisationName");
 
             if(configObject.hasOwnProperty('ORGANISATION_NAME')){
-                organisationName = configObject.ORGANISATION_NAME.replace('__',' ');
+                organisationName = configObject.ORGANISATION_NAME.replace(/__/g,' ');
             }else{
                 organisationName = 'Medelexis AG';
             }
