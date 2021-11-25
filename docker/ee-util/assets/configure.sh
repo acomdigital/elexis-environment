@@ -27,8 +27,10 @@ java -jar /EnvSubst.jar -s /installdir/.env.bkup -t /installdir/.env.template -f
 # REPLACING UUID TEMPLATE VARIABLES
 # we need a new line for every replaced value in order to re-init a unique id
 #
-sed -i -e "0,/=missing-uuid/{s//=$(uuidgen)/}" /installdir/.env
-sed -i -e "0,/=missing-uuid/{s//=$(uuidgen)/}" /installdir/.env
+mv /installdir/.env /installdir/.env.input
+awk 'BEGIN { p="/proc/sys/kernel/random/uuid" } /missing-uuid/ { getline uuid < p; close(p) sub("missing-uuid", uuid) } 1' /installdir/.env.input > /installdir/.env.output
+mv /installdir/.env.output /installdir/.env
+rm /installdir/.env.input
 
 #
 # TEST PRECONDITIONS
@@ -87,16 +89,4 @@ then
     openssl req -new -config /site/certificate.cnf -keyout /site/certificate.key -out /site/certificate.csr
 else
     echo "  skipping certificate.key/csr generation"
-fi
-
-if [ ! -f "/site/bootstrap.ldif" ]; 
-then
-    echo "* generating bootstrap.ldif"
-    SALT="$(openssl rand 3)"
-    SHA1="$(printf "%s%s" "$ADMIN_PASSWORD" "$SALT" | openssl dgst -binary -sha1)"
-    SHA1_ADMIN_PASS="$(printf "%s%s" "$SHA1" "$SALT" | base64)"
-    export SHA1_ADMIN_PASS
-    cat /assets/ldap/bootstrap.ldif.template | envsubst > /site/bootstrap.ldif
-else
-    echo "  skipping ldap/bootstrap.ldif generation"
 fi
