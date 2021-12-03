@@ -41,7 +41,7 @@ NC_PUBLIC_CERT=$(cat /nextcloud-saml-public.cert)
 
 java -jar /NextcloudSetter.jar -t -l NextcloudAdmin -p $ADMIN_PASSWORD -u $NC_BASEURL -v \
     -s user_saml/type="saml" \
-    -s user_saml/general-allow_multiple_user_back_ends="1" \
+    -s user_saml/general-allow_multiple_user_back_ends="0" \
     -s user_saml/general-idp0_display_name="Elexis-Environment" \
     -s user_saml/general-uid_mapping="username" \
     -s user_saml/general-use_saml_auth_for_desktop="1" \

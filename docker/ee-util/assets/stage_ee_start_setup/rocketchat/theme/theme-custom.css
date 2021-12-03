@@ -167,14 +167,14 @@ body {
 	transform: translateX(25%) translateY(-25%);
 }
 
-.sidebar__footer:not(:empty) {
+.sidebar footer:not(:empty) {
 	height: 100px !important;
 	display: flex !important;
 	justify-content: center !important;
 	align-items: center !important;
 }
 
-.sidebar__footer:not(:empty) img {
+.sidebar footer:not(:empty) img {
 	width: 123px !important;
 	height: auto !important;
 }

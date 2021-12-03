@@ -8,3 +8,7 @@ COPY assets/ee-init.sh /
 COPY assets/entrypoint.sh /
 COPY assets/usr/lib/php/extensions/no-debug-non-zts-20190902/smbclient.so /usr/local/lib/php/extensions/no-debug-non-zts-20190902/smbclient.so
 COPY assets/usr/local/etc/php/conf.d/docker-php-ext-smbclient.ini /usr/local/etc/php/conf.d/docker-php-ext-smbclient.ini
+COPY assets/apps/ /var/www/tmp/apps/
+COPY assets/core/doc/user/_static/custom.css /var/www/tmp/core/doc/user/_static/custom.css
+COPY assets/images/ /var/www/tmp/images/
+COPY assets/core/templates/ /var/www/tmp/core/templates
