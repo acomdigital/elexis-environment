@@ -56,9 +56,10 @@ java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BA
 #
 #
 echo "$T Assert Custom CSS (Theme setup) ... "
-THEME_CSS=$(cat ./rocketchat/theme/theme-custom.css)
-java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BASEURL -v \
-    -s theme-custom-css="$THEME_CSS"
+THEME_CSS=$(cat ./rocketchat/theme/theme-custom.min.css)
+SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
+# https://developer.rocket.chat/api/rest-api/methods/settings/update
+curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/theme-custom-css -d '{"value":"'"$THEME_CSS"'"}'
 echo "\n"
 
 #
@@ -76,28 +77,26 @@ echo "\n"
 #
 #
 # Load Custom Script for Logout Flow (Theme setup)
-# !!! Temporary disabled
 #
 #
-#echo "$T Assert Custom_Script_Logout_Flow (Theme setup) ... "
-#THEME_CUSTOM_LOGOUT_FLOW_JS=$(cat ./rocketchat/theme/custom_logout_flow.min.js)
-#SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
-## https://developer.rocket.chat/api/rest-api/methods/settings/update
-#curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_On_Logout -d '{"value":"'"$THEME_CUSTOM_LOGOUT_FLOW_JS"'"}'
-#echo "\n"
+echo "$T Assert Custom_Script_Logout_Flow (Theme setup) ... "
+THEME_CUSTOM_LOGOUT_FLOW_JS=$(cat ./rocketchat/theme/custom_logout_flow.min.js)
+SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
+# https://developer.rocket.chat/api/rest-api/methods/settings/update
+curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_On_Logout -d '{"value":"'"$THEME_CUSTOM_LOGOUT_FLOW_JS"'"}'
+echo "\n"
 
 #
 #
 # Load Custom Script for Logged Out (Theme setup)
-# !!! Temporary disabled
 #
 #
-#echo "$T Assert Custom_Script_Logged_Out (Theme setup) ... "
-#THEME_CUSTOM_LOGGED_OUT_JS=$(cat ./rocketchat/theme/custom_logged_out.min.js)
-#SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
-## https://developer.rocket.chat/api/rest-api/methods/settings/update
-#curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_Logged_Out -d '{"value":"'"$THEME_CUSTOM_LOGGED_OUT_JS"'"}'
-#echo "\n"
+echo "$T Assert Custom_Script_Logged_Out (Theme setup) ... "
+THEME_CUSTOM_LOGGED_OUT_JS=$(cat ./rocketchat/theme/custom_logged_out.min.js)
+SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
+# https://developer.rocket.chat/api/rest-api/methods/settings/update
+curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_Logged_Out -d '{"value":"'"$THEME_CUSTOM_LOGGED_OUT_JS"'"}'
+echo "\n"
 
 #
 #
@@ -109,7 +108,6 @@ java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BA
     -s Accounts_PasswordReset=false \
     -s Accounts_RegistrationForm=Disabled \
     -s Accounts_TwoFactorAuthentication_Enabled=false \
-    -s Enable_CSP=false \
     -s Accounts_RegistrationForm_LinkReplacementText="" \
     -s API_Enable_Rate_Limiter_Limit_Calls_Default=100 \
     -s Site_Name="Chat - ${ORGANISATION_NAME//__/\ }" \

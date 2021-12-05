@@ -1,0 +1,604 @@
+{
+  "manifest": [
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.ttf",
+      "size": 249556,
+      "hash": "1b38414956c666bd1df78fe5b9c84756",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.woff",
+      "size": 119608,
+      "hash": "071569064a6dcbbdaeeca13e66339c33",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.ttf",
+      "size": 244468,
+      "hash": "ade91f473255991f410f61857696434b",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.ttf",
+      "size": 173172,
+      "hash": "2ffc058ddedacfeaa23542026c8108e2",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.otf",
+      "size": 402400,
+      "hash": "be16da5df5e2e5d87bd4d4ff26efcf0b",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.woff2",
+      "size": 71464,
+      "hash": "429c6f4bef7c5d50245a021059002a98",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.svg",
+      "size": 1013951,
+      "hash": "b6b85b830b9b85d9f1742ddf5b5034c9",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.svg",
+      "size": 1105454,
+      "hash": "331049e49982798de6d9346113a976c1",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.eot",
+      "size": 167516,
+      "hash": "a3b2797b2c503efd4ca6688832818246",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.otf",
+      "size": 256260,
+      "hash": "d33c5fc216e6e3b55a4832491cc9eca5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.eot",
+      "size": 170692,
+      "hash": "1f4fc450f803dda23635b28aa6dbd8b1",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.svg",
+      "size": 2069052,
+      "hash": "da74355722c694e1987536e2a5815e6c",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.woff",
+      "size": 133184,
+      "hash": "c3f8a2668f1a159918fbb158ac599eb3",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.eot",
+      "size": 168436,
+      "hash": "60708cf427a8c299acfa40456cdcdae5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.woff",
+      "size": 118740,
+      "hash": "242ab11294b3c546cf8d1bbfcad5741e",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.ttf",
+      "size": 171508,
+      "hash": "0be9fa8f2863998d1e52c84165976880",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.woff2",
+      "size": 72116,
+      "hash": "103334e08c43ba028115e17d942418e2",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.woff2",
+      "size": 64252,
+      "hash": "925eed1afa6e9bd0e626b6ade5cfe20b",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.otf",
+      "size": 255936,
+      "hash": "e5e0724aa0625e85d41a70ee37b9b1e4",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.eot",
+      "size": 173384,
+      "hash": "d624382cf2866f99f5aec0555c7c5de1",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.svg",
+      "size": 1099337,
+      "hash": "fac5c3c54feca9388dca1105e3865f1d",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.woff2",
+      "size": 65652,
+      "hash": "620ad3efb9527fc49f63827d75a9cb4e",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.woff2",
+      "size": 65772,
+      "hash": "abdecfaa237e3dfabfc6ef7460c7f5d9",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.otf",
+      "size": 240416,
+      "hash": "1f8b1bb360068f61fb72dece3fa01f10",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.woff2",
+      "size": 71308,
+      "hash": "b4e637086f1eff6e21b022434e472f09",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.woff2",
+      "size": 163629,
+      "hash": "e58e5c0e0b7fbb8be1a788993ded39d5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.woff2",
+      "size": 69720,
+      "hash": "ed32c9a2494eaa66558979a70d01c738",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.svg",
+      "size": 1106543,
+      "hash": "44f9505a668d3397d03cb19e3a811d42",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.woff",
+      "size": 180264,
+      "hash": "2db2916f1e7eedf4350513d45d84004b",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.svg",
+      "size": 1032063,
+      "hash": "7ca4ec0eb24471325bab86797559c7bf",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.svg",
+      "size": 2188983,
+      "hash": "715075ee6151821c813711bb3ac630ad",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.ttf",
+      "size": 167000,
+      "hash": "6090d256d88dcd7f0244eaa4a3eafbba",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.otf",
+      "size": 235524,
+      "hash": "bb79c667ad08e40c0bea4fe32de987a5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.eot",
+      "size": 171716,
+      "hash": "0a7a743905a7baa7d7cc72a377276975",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.svg",
+      "size": 1035854,
+      "hash": "90ea92a5e1efa28d86874ad856905b56",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.otf",
+      "size": 262264,
+      "hash": "828e060e62a20576f11356db5cd84b14",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.eot",
+      "size": 244652,
+      "hash": "d8e01c23a4c04c132a443a71dbe2220f",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.svg",
+      "size": 1035681,
+      "hash": "26c9360f87d92ec7e68ce06b09a3b8ca",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.ttf",
+      "size": 170504,
+      "hash": "465d1affcd03e9c6096f3313a47e0bf5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.otf",
+      "size": 236620,
+      "hash": "2e009afe30bd05a94d9ffe70d158e7bb",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.woff2",
+      "size": 163799,
+      "hash": "e828989f829e86e3b01bfc447fac40d1",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.otf",
+      "size": 233484,
+      "hash": "4d9f9ae45bf5743d53041084c24ba3ee",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.otf",
+      "size": 259752,
+      "hash": "a18efb8a2a1809d56dd4ff8338c89a53",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.otf",
+      "size": 415840,
+      "hash": "2df6f71f486b6be845c0b3e7c3b40c02",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.woff2",
+      "size": 66064,
+      "hash": "54efe3f1c3938c9bdc73a1f012169eb8",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.woff",
+      "size": 122556,
+      "hash": "9cf16dcdc41f1442e8ccfe581d3291c5",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Regular.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Regular.ttf",
+      "size": 168260,
+      "hash": "f36638c2135b71e5a623dca52b611173",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.eot",
+      "size": 168684,
+      "hash": "dfd6319a809c3746f24638dfa2685ad3",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-BoldItalic.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-BoldItalic.eot",
+      "size": 249768,
+      "hash": "31063b480382987438532955c8e588f0",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.eot",
+      "size": 173068,
+      "hash": "f063c714313532c481a81509c329aa3c",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-BoldItalic.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-BoldItalic.woff",
+      "size": 132488,
+      "hash": "382f6dcc71cc2b6335d389a3f359ed26",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.woff",
+      "size": 120468,
+      "hash": "c223d2e407df1877a9c9ecca491f4d32",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.ttf",
+      "size": 172860,
+      "hash": "7384da64612787e3662872e9d19cbc2d",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Italic.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Italic.svg",
+      "size": 1096820,
+      "hash": "30b7971a870e45210b539438abf40bb8",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Light.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Light.eot",
+      "size": 167200,
+      "hash": "e064317c5d24b6eb355f29f601aba0e8",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Bold.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Bold.ttf",
+      "size": 167336,
+      "hash": "9ece5b48963bbc96309220952cda38aa",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-LightItalic.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-LightItalic.woff",
+      "size": 136544,
+      "hash": "af7b5a0b37ab311bb4635dce473ac4c6",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-Thin.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-Thin.ttf",
+      "size": 168488,
+      "hash": "4f0b85f5b601a405bdc7b23aad6d2a47",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Roboto-ThinItalic.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Roboto-ThinItalic.woff",
+      "size": 133088,
+      "hash": "a6a4046e6907b17e3aa42d6f41eb9691",
+      "sri": "null"
+    },
+    {
+      "path": "app/fonts/Montserrat-Bold.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": "false",
+      "url": "/fonts/Montserrat-Bold.woff",
+      "size": 171172,
+      "hash": "e30b30a01cd02f2d7595967db2b73b04",
+      "sri": "null"
+    }
+  ]
+}
