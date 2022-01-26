@@ -50,6 +50,9 @@ echo "Use SVG favicon ... "
 java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BASEURL -v \
     -s Assets_SvgFavicon_Enable=true
 
+# X-2fa-code
+SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
+
 #
 #
 # Load Custom CSS (Theme setup)
@@ -57,8 +60,6 @@ java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BA
 #
 echo "$T Assert Custom CSS (Theme setup) ... "
 THEME_CSS=$(cat ./rocketchat/theme/theme-custom.min.css)
-SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
-# https://developer.rocket.chat/api/rest-api/methods/settings/update
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/theme-custom-css -d '{"value":"'"$THEME_CSS"'"}'
 echo "\n"
 
@@ -69,7 +70,6 @@ echo "\n"
 #
 echo "$T Assert Custom_Script_Logged_In (Theme setup) ... "
 THEME_JS=$(cat ./rocketchat/theme/theme-custom.min.js)
-SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
 # https://developer.rocket.chat/api/rest-api/methods/settings/update
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_Logged_In -d '{"value":"'"$THEME_JS"'"}'
 echo "\n"
@@ -81,7 +81,6 @@ echo "\n"
 #
 echo "$T Assert Custom_Script_Logout_Flow (Theme setup) ... "
 THEME_CUSTOM_LOGOUT_FLOW_JS=$(cat ./rocketchat/theme/custom_logout_flow.min.js)
-SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
 # https://developer.rocket.chat/api/rest-api/methods/settings/update
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_On_Logout -d '{"value":"'"$THEME_CUSTOM_LOGOUT_FLOW_JS"'"}'
 echo "\n"
@@ -93,7 +92,6 @@ echo "\n"
 #
 echo "$T Assert Custom_Script_Logged_Out (Theme setup) ... "
 THEME_CUSTOM_LOGGED_OUT_JS=$(cat ./rocketchat/theme/custom_logged_out.min.js)
-SHA_256_HASH=$(echo -n $ADMIN_PASSWORD | sha256sum | cut -d' ' -f 1)
 # https://developer.rocket.chat/api/rest-api/methods/settings/update
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "X-2fa-code: $SHA_256_HASH" -H "X-2fa-method: password" -H "Content-type: application/json" $RC_BASEURL/api/v1/settings/Custom_Script_Logged_Out -d '{"value":"'"$THEME_CUSTOM_LOGGED_OUT_JS"'"}'
 echo "\n"
@@ -107,7 +105,6 @@ echo "$T Assert basic configuration ... "
 java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BASEURL -v \
     -s Accounts_PasswordReset=false \
     -s Accounts_RegistrationForm=Disabled \
-    -s Accounts_TwoFactorAuthentication_Enabled=false \
     -s Accounts_RegistrationForm_LinkReplacementText="" \
     -s API_Enable_Rate_Limiter_Limit_Calls_Default=100 \
     -s Site_Name="Chat - ${ORGANISATION_NAME//__/\ }" \
@@ -115,6 +112,7 @@ java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BA
     -s SMTP_Host="${EE_HOST_INTERNAL_IP}" \
     -s SMTP_Port="25" \
     -s From_Email="rocketchat@${EE_HOSTNAME}" \
+    -s LDAP_Enable=false \
     -s RetentionPolicy_Enabled=true
 
 #
@@ -150,6 +148,12 @@ java -jar /RocketchatSetting.jar -l RocketChatAdmin -p $ADMIN_PASSWORD -u $RC_BA
 echo -e "\n$T Assert Elexis-Server - channel #elexis-server ..."
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/channels.create -d '{ "name": "elexis-server", "description": "Elexis-Server status messages" }'
 
+echo -e "\n Assert Elexis-Server - channel retention policy 14 days ..."
+ALL_ROOMS=$(curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/rooms.get)
+ELEXIS_SERVER_ROOM_ID=$(echo $ALL_ROOMS | jq '.update[] | select(.name == "elexis-server") | ._id')
+curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/rooms.saveRoomSettings -d '{"rid": '$ELEXIS_SERVER_ROOM_ID',  "retentionOverrideGlobal": true, "retentionEnabled":true}'
+curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/rooms.saveRoomSettings -d '{"rid": '$ELEXIS_SERVER_ROOM_ID',  "retentionExcludePinned": true, "retentionMaxAge": "14", "retentionFilesOnly" : false}'
+
 echo -e "\n$T Assert Elexis-Server - bot user for elexis-user ..."
 curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/users.create --data-binary @rocketchat/cr_es_user.json
 
@@ -164,6 +168,8 @@ if [ -z "$EXISTING" ]; then
     EXISTING=$(curl -s -k -H "X-Auth-Token: $AUTH_TOKEN" -H "X-User-Id: $USER_ID" -H "Content-type: application/json" $RC_BASEURL/api/v1/integrations.create --data-binary @rocketchat/cr_es_inc_webhook.json)
 fi
 echo $EXISTING
+
+
 
 #
 #

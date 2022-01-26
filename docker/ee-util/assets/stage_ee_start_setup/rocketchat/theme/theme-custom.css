@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-Thin.eot');
+    src: url('/b_pub/fonts/Roboto-Thin.eot');
     src: local('☺'),
-    url('fonts/Roboto-Thin.woff2') format('woff2'),
-    url('fonts/Roboto-Thin.woff') format('woff'),
-    url('fonts/Roboto-Thin.ttf') format('truetype'),
-    url('fonts/Roboto-Thin.svg') format('svg');
+    url('/b_pub/fonts/Roboto-Thin.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-Thin.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-Thin.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-Thin.svg') format('svg');
     font-weight: 100;
     font-style: normal;
 }
@@ -14,12 +14,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-ThinItalic.eot');
+    src: url('/b_pub/fonts/Roboto-ThinItalic.eot');
     src: local('☺'),
-    url('fonts/Roboto-ThinItalic.woff2') format('woff2'),
-    url('fonts/Roboto-ThinItalic.woff') format('woff'),
-    url('fonts/Roboto-ThinItalic.ttf') format('truetype'),
-    url('fonts/Roboto-ThinItalic.svg') format('svg');
+    url('/b_pub/fonts/Roboto-ThinItalic.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-ThinItalic.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-ThinItalic.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-ThinItalic.svg') format('svg');
     font-weight: 100;
     font-style: italic;
 }
@@ -27,12 +27,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-Light.eot');
+    src: url('/b_pub/fonts/Roboto-Light.eot');
     src: local('☺'),
-    url('fonts/Roboto-Light.woff2') format('woff2'),
-    url('fonts/Roboto-Light.woff') format('woff'),
-    url('fonts/Roboto-Light.ttf') format('truetype'),
-    url('fonts/Roboto-Light.svg') format('svg');
+    url('/b_pub/fonts/Roboto-Light.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-Light.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-Light.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-Light.svg') format('svg');
     font-weight: 300;
     font-style: normal;
 }
@@ -40,12 +40,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-LightItalic.eot');
+    src: url('/b_pub/fonts/Roboto-LightItalic.eot');
     src: local('☺'),
-    url('fonts/Roboto-LightItalic.woff2') format('woff2'),
-    url('fonts/Roboto-LightItalic.woff') format('woff'),
-    url('fonts/Roboto-LightItalic.ttf') format('truetype'),
-    url('fonts/Roboto-LightItalic.svg') format('svg');
+    url('/b_pub/fonts/Roboto-LightItalic.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-LightItalic.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-LightItalic.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-LightItalic.svg') format('svg');
     font-weight: 300;
     font-style: italic;
 }
@@ -53,12 +53,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-Regular.eot');
+    src: url('/b_pub/fonts/Roboto-Regular.eot');
     src: local('☺'),
-    url('fonts/Roboto-Regular.woff2') format('woff2'),
-    url('fonts/Roboto-Regular.woff') format('woff'),
-    url('fonts/Roboto-Regular.ttf') format('truetype'),
-    url('fonts/Roboto-Regular.svg') format('svg');
+    url('/b_pub/fonts/Roboto-Regular.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-Regular.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-Regular.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-Regular.svg') format('svg');
     font-weight: 400;
     font-style: normal;
 }
@@ -66,12 +66,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-Italic.eot');
+    src: url('/b_pub/fonts/Roboto-Italic.eot');
     src: local('☺'),
-    url('fonts/Roboto-Italic.woff2') format('woff2'),
-    url('fonts/Roboto-Italic.woff') format('woff'),
-    url('fonts/Roboto-Italic.ttf') format('truetype'),
-    url('fonts/Roboto-Italic.svg') format('svg');
+    url('/b_pub/fonts/Roboto-Italic.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-Italic.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-Italic.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-Italic.svg') format('svg');
     font-weight: 400;
     font-style: italic;
 }
@@ -79,12 +79,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-Bold.eot');
+    src: url('/b_pub/fonts/Roboto-Bold.eot');
     src: local('☺'),
-    url('fonts/Roboto-Bold.woff2') format('woff2'),
-    url('fonts/Roboto-Bold.woff') format('woff'),
-    url('fonts/Roboto-Bold.ttf') format('truetype'),
-    url('fonts/Roboto-Bold.svg') format('svg');
+    url('/b_pub/fonts/Roboto-Bold.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-Bold.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-Bold.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-Bold.svg') format('svg');
     font-weight: 700;
     font-style: normal;
 }
@@ -92,12 +92,12 @@
 @font-face {
     font-family: 'Roboto';
     font-display: swap;
-    src: url('fonts/Roboto-BoldItalic.eot');
+    src: url('/b_pub/fonts/Roboto-BoldItalic.eot');
     src: local('☺'),
-    url('fonts/Roboto-BoldItalic.woff2') format('woff2'),
-    url('fonts/Roboto-BoldItalic.woff') format('woff'),
-    url('fonts/Roboto-BoldItalic.ttf') format('truetype'),
-    url('fonts/Roboto-BoldItalic.svg') format('svg');
+    url('/b_pub/fonts/Roboto-BoldItalic.woff2') format('woff2'),
+    url('/b_pub/fonts/Roboto-BoldItalic.woff') format('woff'),
+    url('/b_pub/fonts/Roboto-BoldItalic.ttf') format('truetype'),
+    url('/b_pub/fonts/Roboto-BoldItalic.svg') format('svg');
     font-weight: 700;
     font-style: italic;
 }
@@ -105,12 +105,12 @@
 @font-face {
     font-family: 'Montserrat';
     font-display: swap;
-    src: url('fonts/Montserrat-Bold.eot');
+    src: url('/b_pub/fonts/Montserrat-Bold.eot');
     src: local('☺'),
-    url('fonts/Montserrat-Bold.woff2') format('woff2'),
-    url('fonts/Montserrat-Bold.woff') format('woff'),
-    url('fonts/Montserrat-Bold.ttf') format('truetype'),
-    url('fonts/Montserrat-Bold.svg') format('svg');
+    url('/b_pub/fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('/b_pub/fonts/Montserrat-Bold.woff') format('woff'),
+    url('/b_pub/fonts/Montserrat-Bold.ttf') format('truetype'),
+    url('/b_pub/fonts/Montserrat-Bold.svg') format('svg');
     font-weight: 700;
     font-style: normal;
 }
@@ -118,12 +118,12 @@
 @font-face {
     font-family: 'Montserrat';
     font-display: swap;
-    src: url('fonts/Montserrat-BoldItalic.eot');
+    src: url('/b_pub/fonts/Montserrat-BoldItalic.eot');
     src: local('☺'),
-    url('fonts/Montserrat-BoldItalic.woff2') format('woff2'),
-    url('fonts/Montserrat-BoldItalic.woff') format('woff'),
-    url('fonts/Montserrat-BoldItalic.ttf') format('truetype'),
-    url('fonts/Montserrat-BoldItalic.svg') format('svg');
+    url('/b_pub/fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+    url('/b_pub/fonts/Montserrat-BoldItalic.woff') format('woff'),
+    url('/b_pub/fonts/Montserrat-BoldItalic.ttf') format('truetype'),
+    url('/b_pub/fonts/Montserrat-BoldItalic.svg') format('svg');
     font-weight: 700;
     font-style: italic;
 }
