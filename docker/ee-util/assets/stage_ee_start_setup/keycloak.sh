@@ -36,8 +36,13 @@ echo "$T Basic ElexisEnvironment realm settings ..."
 $KCADM update realms/ElexisEnvironment -s userManagedAccessAllowed=true -s bruteForceProtected=true \
     -s loginTheme=elexis-environment -s accountTheme=elexis-environment -s adminTheme=keycloak -s emailTheme=elexis-environment \
     -s smtpServer.host=$EE_HOST_INTERNAL_IP  -s smtpServer.from=keycloak@$EE_HOSTNAME -s smtpServer.auth=false -s smtpServer.ssl=false \
-    -s registrationAllowed=false \
-    -s internationalizationEnabled=true -s defaultLocale=de
+    -s registrationAllowed=false -s internationalizationEnabled=true -s defaultLocale=de
+
+#
+# Master Realm Theme setting
+#
+echo "$T Master realm theme settings ..."
+$KCADM update realms/master -s loginTheme=keycloak -s accountTheme=keycloak -s adminTheme=keycloak -s emailTheme=keycloak
 
 #
 # Provide Elexis-Environment realm keys to other services
@@ -90,9 +95,9 @@ if [ -z $RC_SAML_CLIENTID ]; then
 fi
 
 echo "$T update client settings ... "
-openssl req -nodes -new -x509 -keyout /rocketchat-saml-private.key -out /rocketchat-saml-public.cert -subj "/C=CH/ST=$ORGANISATION_NAME/L=SAML/O=Rocketchat"
+openssl req -nodes -new -x509 -days 730 -keyout /rocketchat-saml-private.key -out /rocketchat-saml-public.cert -subj "/C=CH/ST=$ORGANISATION_NAME/L=SAML/O=Rocketchat"
 RC_SAML_PUBLIC_CERT=$(cat /rocketchat-saml-public.cert | sed '1,1d' | sed '$ d')
-$KCADM update clients/$RC_SAML_CLIENTID -r ElexisEnvironment -s 'attributes."saml.signing.certificate"='"$RC_SAML_PUBLIC_CERT" -s adminUrl=https://$EE_HOSTNAME/chat/_saml_metadata/rocketchat-saml -f keycloak/rocketchat-saml.json
+$KCADM update clients/$RC_SAML_CLIENTID -r ElexisEnvironment -s clientId=rocketchat-saml -s 'attributes."saml.signing.certificate"='"$RC_SAML_PUBLIC_CERT" -s adminUrl=https://$EE_HOSTNAME/chat/_saml_metadata/rocketchat-saml -f keycloak/rocketchat-saml.json
 # see https://rocket.chat/docs/administrator-guides/permissions/ for full list, only using relevant roles
 createOrUpdateClientRole $RC_SAML_CLIENTID user 'description=Normal user rights. Most users receive this role when registering.'
 createOrUpdateClientRole $RC_SAML_CLIENTID admin 'description=Have access to all settings and administrator tools.'
@@ -113,7 +118,7 @@ if [ -z $BS_SAML_CLIENTID ]; then
 fi
 
 echo "$T update client settings ... "
-$KCADM update clients/$BS_SAML_CLIENTID -r ElexisEnvironment -f keycloak/bookstack-saml.json
+$KCADM update clients/$BS_SAML_CLIENTID -r ElexisEnvironment -s clientId=https://$EE_HOSTNAME/bookstack/saml2/metadata -f keycloak/bookstack-saml.json
 createSamlClientMapper $BS_SAML_CLIENTID username saml-user-property-mapper
 createSamlClientMapper $BS_SAML_CLIENTID email saml-user-property-mapper
 createSamlClientMapper $BS_SAML_CLIENTID cn saml-javascript-mapper keycloak/bookstack-saml-mapper-cn.json
@@ -139,7 +144,7 @@ fi
 echo "$T update client settings ... "
 openssl req -nodes -new -x509 -keyout /nextcloud-saml-private.key -out /nextcloud-saml-public.cert -subj "/C=CH/ST=$ORGANISATION_NAME/L=SAML/O=Nextcloud"
 NC_SAML_PUBLIC_CERT=$(cat /nextcloud-saml-public.cert | sed '1,1d' | sed '$ d')
-$KCADM update clients/$NC_SAML_CLIENTID -r ElexisEnvironment -s 'attributes."saml.signing.certificate"='"$NC_SAML_PUBLIC_CERT" -f keycloak/nextcloud-saml.json
+$KCADM update clients/$NC_SAML_CLIENTID -r ElexisEnvironment -s clientId=https://$EE_HOSTNAME/cloud/apps/user_saml/saml/metadata -s 'attributes."saml.signing.certificate"='"$NC_SAML_PUBLIC_CERT" -f keycloak/nextcloud-saml.json
 echo "$T update client enabled=$ENABLE_NEXTCLOUD"
 $KCADM update clients/$NC_SAML_CLIENTID -r ElexisEnvironment -s enabled=$ENABLE_NEXTCLOUD
 createSamlClientMapper $NC_SAML_CLIENTID username saml-user-property-mapper
@@ -148,49 +153,37 @@ createSamlClientMapper $NC_SAML_CLIENTID nextcloudquota saml-user-property-mappe
 createSamlClientMapper $NC_SAML_CLIENTID cn saml-javascript-mapper keycloak/nextcloud-saml-mapper-cn.json
 
 #
-# ELEXIS-RCP-OPENID
-# Re-create on every startup
+# ELEXIS-SERVER.FHIR-API (Bearer Only)
 #
-T="$S (elexis-rcp-openid)"
-ERCP_OPENID_CLIENTID=$(getClientId elexis-rcp-openid)
-if [ -z $ERCP_OPENID_CLIENTID ]; then
+T="$S (elexis-server.fhir-api)"
+ES_FHIR_OPENID_CLIENTID=$(getClientId elexis-server.fhir-api | cut -d "," -f1)
+if [ -z $ES_FHIR_OPENID_CLIENTID ]; then
     echo -n "$T create client ... "
-    ERCP_OPENID_CLIENTID=$($KCADM create clients -r ElexisEnvironment -s clientId=elexis-rcp-openid -i)
-    echo "ok $ERCP_OPENID_CLIENTID"
+    ES_FHIR_OPENID_CLIENTID=$($KCADM create clients -r ElexisEnvironment -s clientId=elexis-server.fhir-api -i)
+    echo "ok $ES_FHIR_OPENID_CLIENTID"
 fi
 
 echo "$T update client settings ... "
-RCP_SECRET_UUID=$(uuidgen)
-echo "$T secret: $RCP_SECRET_UUID"
-$KCADM update clients/$ERCP_OPENID_CLIENTID -s clientAuthenticatorType=client-secret -s secret=$RCP_SECRET_UUID -f keycloak/elexis-rcp-openid.json
-LASTUPDATE=$(date +%s)000
-MYSQL_STRING="INSERT INTO CONFIG(lastupdate, param, wert) VALUES ('${LASTUPDATE}','EE_RCP_OPENID_SECRET', '${RCP_SECRET_UUID}') ON DUPLICATE KEY UPDATE wert = '${RCP_SECRET_UUID}', lastupdate='${LASTUPDATE}'"
-/usql mysql://${RDBMS_ELEXIS_USERNAME}:${RDBMS_ELEXIS_PASSWORD}@${RDBMS_HOST}:${RDBMS_PORT}/${RDBMS_ELEXIS_DATABASE} -c "$MYSQL_STRING"
-# $KCADM create clients/$ERCP_OPENID_CLIENTID/roles -r ElexisEnvironment -s name=user -s 'description=Application user, required to log-in'
-# $KCADM create clients/$ERCP_OPENID_CLIENTID/roles -r ElexisEnvironment -s name=doctor
-# $KCADM create clients/$ERCP_OPENID_CLIENTID/roles -r ElexisEnvironment -s name=executive_doctor
-echo "$T update client enabled=$ENABLE_ELEXIS_RCP"
-$KCADM update clients/$ERCP_OPENID_CLIENTID -r ElexisEnvironment -s enabled=$ENABLE_ELEXIS_RCP
+$KCADM update clients/$ES_FHIR_OPENID_CLIENTID -r ElexisEnvironment -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$X_EE_ELEXIS_SERVER_CLIENT_SECRET -s bearerOnly=true
 
 #
-# ELEXIS-RAP-OPENID
-# Re-create on every startup
+# ELEXIS-SERVER.JAXRS-API (Bearer Only)
 #
-#
-#
-# TODO: Fix HTTP/HTTPS redirectUri Problem
-# TODO: Apply registration update logic
-#
-#
-T="$S (elexis-rap-openid)"
-ER_OPENID_CLIENTID=$(getClientId elexis-rap-openid | cut -d "," -f1)
-if [ ! -z $ER_OPENID_CLIENTID ]; then
-    echo "$T remove existing elexis-rap-openid client... "
-    $KCADM delete clients/$ER_OPENID_CLIENTID -r ElexisEnvironment
+T="$S (elexis-server.jaxrs-api)"
+ES_JAXRS_OPENID_CLIENTID=$(getClientId elexis-server.jaxrs-api | cut -d "," -f1)
+if [ -z $ES_JAXRS_OPENID_CLIENTID ]; then
+    echo -n "$T create client ... "
+    ES_JAXRS_OPENID_CLIENTID=$($KCADM create clients -r ElexisEnvironment -s clientId=elexis-server.jaxrs-api -i)
+    echo "ok $ES_JAXRS_OPENID_CLIENTID"
 fi
 
-if [[ $ENABLE_ELEXIS_RAP == true ]]; then
-    echo -n "$T assert elexis-rap-openid client ... "
-    ER_OPENID_CLIENT=$($KCADM create clients -r ElexisEnvironment -s clientId=elexis-rap-openid -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$X_EE_ELEXIS_RAP_CLIENT_SECRET -s 'redirectUris=["http://'$EE_HOSTNAME'/rap/*"]' -f keycloak/elexis-rap-openid.json -i)
-    echo "ok $ER_OPENID_CLIENT"
-fi
+echo "$T update client settings ... "
+$KCADM update clients/$ES_JAXRS_OPENID_CLIENTID -r ElexisEnvironment -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$X_EE_ELEXIS_SERVER_CLIENT_SECRET -s bearerOnly=true
+
+source keycloak_elexis-web.sh
+
+source keycloak_solr.sh
+
+# ELEXIS-RCP-OPENID
+# references solr client in mapper
+source keycloak_elexis-rcp-openid.sh

@@ -5,6 +5,8 @@ if (window.localStorage.getItem('logout') != null) {
     var checkFormInterval = setInterval(function() {
         if (document.getElementsByClassName('external-login').length) {
             clearInterval(checkFormInterval);
-            document.getElementById('login-card').getElementsByClassName('external-login')[0].click();
+            if (!document.getElementById('toast-container')) {
+                document.getElementById('login-card').getElementsByClassName('external-login')[0].click();
+            }
         }  }, 100);
 }
